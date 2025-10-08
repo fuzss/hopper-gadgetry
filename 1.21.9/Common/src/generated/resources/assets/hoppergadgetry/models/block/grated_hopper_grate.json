@@ -1,7 +1,0 @@
-{
-  "parent": "hoppergadgetry:block/template_grate",
-  "textures": {
-    "particle": "minecraft:block/iron_bars",
-    "texture": "minecraft:block/iron_bars"
-  }
-}
