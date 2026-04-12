@@ -5,8 +5,14 @@ import fuzs.hoppergadgetry.world.inventory.GratedHopperMenu;
 import fuzs.hoppergadgetry.world.level.block.entity.GratedHopperBlockEntity;
 import fuzs.puzzleslib.api.container.v1.ContainerMenuHelper;
 import fuzs.puzzleslib.api.container.v1.ContainerSerializationHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
 import net.minecraft.world.ItemStackWithSlot;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -18,6 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.HopperBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gamerules.GameRules;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
@@ -32,6 +39,34 @@ public class MinecartGratedHopper extends MinecartHopper {
     @Override
     public BlockState getDefaultDisplayBlockState() {
         return ModRegistry.GRATED_HOPPER_BLOCK.value().defaultBlockState();
+    }
+
+    @Override
+    public void chestVehicleDestroyed(DamageSource damageSource, ServerLevel serverLevel, Entity entity) {
+        if (serverLevel.getGameRules().get(GameRules.ENTITY_DROPS)) {
+            dropsContents(this, this.filterItems);
+        }
+
+        super.chestVehicleDestroyed(damageSource, serverLevel, entity);
+    }
+
+    @Override
+    public void remove(RemovalReason removalReason) {
+        if (!this.level().isClientSide() && removalReason.shouldDestroy()) {
+            dropsContents(this, this.filterItems);
+        }
+
+        super.remove(removalReason);
+    }
+
+    /**
+     * @see Containers#dropContents(Level, Entity, Container)
+     * @see Containers#dropContents(Level, BlockPos, NonNullList)
+     */
+    public static void dropsContents(Entity entity, NonNullList<ItemStack> itemStackList) {
+        itemStackList.forEach((ItemStack itemStack) -> {
+            Containers.dropItemStack(entity.level(), entity.getX(), entity.getY(), entity.getZ(), itemStack);
+        });
     }
 
     @Override
