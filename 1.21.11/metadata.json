@@ -3,7 +3,7 @@
         "id": "hoppergadgetry",
         "group": "fuzs.hoppergadgetry",
         "name": "Hopper Gadgetry",
-        "version": "21.11.0",
+        "version": "21.11.1",
         "authors": [
             "Fuzs"
         ],
@@ -36,13 +36,13 @@
     ],
     "links": [
         {
-            "name": "github",
-            "slug": "hoppergadgetry"
-        },
-        {
             "name": "curseforge",
             "slug": "hopper-gadgetry",
             "id": "1254698"
+        },
+        {
+            "name": "github",
+            "slug": "hoppergadgetry"
         },
         {
             "name": "modrinth",
