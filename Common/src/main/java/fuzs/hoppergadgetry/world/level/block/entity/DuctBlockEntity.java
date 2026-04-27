@@ -3,11 +3,12 @@ package fuzs.hoppergadgetry.world.level.block.entity;
 import fuzs.hoppergadgetry.init.ModRegistry;
 import fuzs.hoppergadgetry.world.inventory.DuctMenu;
 import fuzs.hoppergadgetry.world.level.block.DuctBlock;
-import fuzs.puzzleslib.api.block.v1.entity.TickingBlockEntity;
+import fuzs.puzzleslib.common.api.block.v1.entity.TickingBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -45,8 +46,8 @@ public class DuctBlockEntity extends NonHopperBlockEntity implements WorldlyCont
     }
 
     @Override
-    public void serverTick() {
-        pushItemsTick(this.getLevel(), this.getBlockPos(), this.getBlockState(), this);
+    public void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState) {
+        pushItemsTick(serverLevel, blockPos, blockState, this);
     }
 
     @Override

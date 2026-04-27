@@ -3,20 +3,17 @@ package fuzs.hoppergadgetry.client;
 import fuzs.hoppergadgetry.HopperGadgetry;
 import fuzs.hoppergadgetry.client.gui.screens.inventory.HopperLikeScreen;
 import fuzs.hoppergadgetry.init.ModRegistry;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
-import fuzs.puzzleslib.api.client.core.v1.context.EntityRenderersContext;
-import fuzs.puzzleslib.api.client.core.v1.context.LayerDefinitionsContext;
-import fuzs.puzzleslib.api.client.core.v1.context.MenuScreensContext;
-import fuzs.puzzleslib.api.client.core.v1.context.RenderTypesContext;
-import fuzs.puzzleslib.api.client.init.v1.ModelLayerFactory;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
+import fuzs.puzzleslib.common.api.client.core.v1.context.EntityRenderersContext;
+import fuzs.puzzleslib.common.api.client.core.v1.context.LayerDefinitionsContext;
+import fuzs.puzzleslib.common.api.client.core.v1.context.MenuScreensContext;
+import fuzs.puzzleslib.common.api.client.init.v1.ModelLayerFactory;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.object.cart.MinecartModel;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MinecartRenderer;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
-import net.minecraft.world.level.block.Block;
 
 public class HopperGadgetryClient implements ClientModConstructor {
     static final ModelLayerFactory MODEL_LAYERS = ModelLayerFactory.from(HopperGadgetry.MOD_ID);
@@ -51,10 +48,5 @@ public class HopperGadgetryClient implements ClientModConstructor {
     public void onRegisterLayerDefinitions(LayerDefinitionsContext context) {
         context.registerLayerDefinition(GRATED_HOPPER_MINECART, MinecartModel::createBodyLayer);
         context.registerLayerDefinition(CHUTE_MINECART, MinecartModel::createBodyLayer);
-    }
-
-    @Override
-    public void onRegisterBlockRenderTypes(RenderTypesContext<Block> context) {
-        context.registerChunkRenderType(ModRegistry.GRATED_HOPPER_BLOCK.value(), ChunkSectionLayer.CUTOUT);
     }
 }

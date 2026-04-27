@@ -3,10 +3,10 @@ package fuzs.hoppergadgetry.data.client;
 import fuzs.hoppergadgetry.HopperGadgetry;
 import fuzs.hoppergadgetry.init.ModRegistry;
 import fuzs.hoppergadgetry.world.level.block.DuctBlock;
-import fuzs.puzzleslib.api.client.data.v2.AbstractModelProvider;
-import fuzs.puzzleslib.api.client.data.v2.models.ModelLocationHelper;
-import fuzs.puzzleslib.api.client.data.v2.models.ModelTemplateHelper;
-import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import fuzs.puzzleslib.common.api.client.data.v2.AbstractModelProvider;
+import fuzs.puzzleslib.common.api.client.data.v2.models.ModelLocationHelper;
+import fuzs.puzzleslib.common.api.client.data.v2.models.ModelTemplateHelper;
+import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.MultiVariant;
@@ -15,6 +15,7 @@ import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Block;
@@ -40,9 +41,8 @@ public class ModModelProvider extends AbstractModelProvider {
     }
 
     public static TextureMapping createParticleTextureMapping(Block block, String suffix) {
-        Identifier identifier = TextureMapping.getBlockTexture(block, suffix);
-        return new TextureMapping().put(TextureSlot.TEXTURE, identifier)
-                .put(TextureSlot.PARTICLE, identifier);
+        Material material = TextureMapping.getBlockTexture(block, suffix);
+        return new TextureMapping().put(TextureSlot.TEXTURE, material).put(TextureSlot.PARTICLE, material);
     }
 
     @Override

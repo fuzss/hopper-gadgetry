@@ -3,13 +3,14 @@ package fuzs.hoppergadgetry.world.level.block.entity;
 import fuzs.hoppergadgetry.HopperGadgetry;
 import fuzs.hoppergadgetry.init.ModRegistry;
 import fuzs.hoppergadgetry.world.inventory.GratedHopperMenu;
-import fuzs.puzzleslib.api.block.v1.entity.TickingBlockEntity;
-import fuzs.puzzleslib.api.container.v1.ContainerMenuHelper;
-import fuzs.puzzleslib.api.container.v1.ContainerSerializationHelper;
+import fuzs.puzzleslib.common.api.block.v1.entity.TickingBlockEntity;
+import fuzs.puzzleslib.common.api.container.v1.ContainerMenuHelper;
+import fuzs.puzzleslib.common.api.container.v1.ContainerSerializationHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.ItemStackWithSlot;
@@ -95,8 +96,8 @@ public class GratedHopperBlockEntity extends HopperBlockEntity implements Tickin
     }
 
     @Override
-    public void serverTick() {
-        pushItemsTick(this.getLevel(), this.getBlockPos(), this.getBlockState(), this);
+    public void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState) {
+        pushItemsTick(serverLevel, blockPos, blockState, this);
     }
 
     public static void pushItemsTick(Level level, BlockPos pos, BlockState state, HopperBlockEntity blockEntity) {

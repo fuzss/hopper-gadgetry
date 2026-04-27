@@ -2,11 +2,12 @@ package fuzs.hoppergadgetry.world.level.block.entity;
 
 import fuzs.hoppergadgetry.init.ModRegistry;
 import fuzs.hoppergadgetry.world.level.block.ChuteBlock;
-import fuzs.puzzleslib.api.block.v1.entity.TickingBlockEntity;
+import fuzs.puzzleslib.common.api.block.v1.entity.TickingBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -54,13 +55,13 @@ public class ChuteBlockEntity extends HopperBlockEntity implements TickingBlockE
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
+    public @Nullable AbstractContainerMenu createMenu(int containerId, Inventory inventory, Player player) {
         return null;
     }
 
     @Override
-    public void serverTick() {
-        pushItemsTick(this.getLevel(), this.getBlockPos(), this.getBlockState(), this);
+    public void serverTick(ServerLevel serverLevel, BlockPos blockPos, BlockState blockState) {
+        pushItemsTick(serverLevel, blockPos, blockState, this);
     }
 
     public static void pushItemsTick(Level level, BlockPos blockPos, BlockState blockState, HopperBlockEntity blockEntity) {

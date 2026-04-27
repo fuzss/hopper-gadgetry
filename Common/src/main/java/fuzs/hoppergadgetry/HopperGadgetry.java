@@ -1,8 +1,8 @@
 package fuzs.hoppergadgetry;
 
 import fuzs.hoppergadgetry.init.ModRegistry;
-import fuzs.puzzleslib.api.core.v1.ModConstructor;
-import fuzs.puzzleslib.api.core.v1.context.GameplayContentContext;
+import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
+import fuzs.puzzleslib.common.api.core.v1.context.GameplayContentContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.Identifier;
 import org.apache.commons.lang3.math.Fraction;
