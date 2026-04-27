@@ -1,10 +1,10 @@
 package fuzs.hoppergadgetry.neoforge;
 
-import fuzs.hoppergadgetry.HopperGadgetry;
-import fuzs.hoppergadgetry.data.ModBlockLootProvider;
-import fuzs.hoppergadgetry.data.ModBlockTagProvider;
-import fuzs.hoppergadgetry.data.ModRecipeProvider;
-import fuzs.hoppergadgetry.init.ModRegistry;
+import fuzs.hoppergadgetry.common.HopperGadgetry;
+import fuzs.hoppergadgetry.common.data.ModBlockLootProvider;
+import fuzs.hoppergadgetry.common.data.ModBlockTagProvider;
+import fuzs.hoppergadgetry.common.data.ModRecipeProvider;
+import fuzs.hoppergadgetry.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import fuzs.puzzleslib.neoforge.api.init.v3.capability.NeoForgeCapabilityHelper;

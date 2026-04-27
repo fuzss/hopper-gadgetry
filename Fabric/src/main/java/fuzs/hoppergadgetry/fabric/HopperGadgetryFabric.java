@@ -1,6 +1,6 @@
 package fuzs.hoppergadgetry.fabric;
 
-import fuzs.hoppergadgetry.HopperGadgetry;
+import fuzs.hoppergadgetry.common.HopperGadgetry;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 
