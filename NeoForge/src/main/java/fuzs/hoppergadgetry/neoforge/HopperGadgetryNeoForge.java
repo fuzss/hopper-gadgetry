@@ -1,8 +1,8 @@
 package fuzs.hoppergadgetry.neoforge;
 
 import fuzs.hoppergadgetry.common.HopperGadgetry;
-import fuzs.hoppergadgetry.common.data.ModBlockLootProvider;
-import fuzs.hoppergadgetry.common.data.ModBlockTagProvider;
+import fuzs.hoppergadgetry.common.data.loot.ModBlockLootProvider;
+import fuzs.hoppergadgetry.common.data.tags.ModBlockTagsProvider;
 import fuzs.hoppergadgetry.common.data.ModRecipeProvider;
 import fuzs.hoppergadgetry.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
@@ -19,7 +19,7 @@ public class HopperGadgetryNeoForge {
         DataProviderHelper.registerDataProviders(HopperGadgetry.MOD_ID,
                 ModBlockLootProvider::new,
                 ModRecipeProvider::new,
-                ModBlockTagProvider::new);
+                ModBlockTagsProvider::new);
     }
 
     private static void registerCapabilities() {

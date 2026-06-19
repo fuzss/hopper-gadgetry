@@ -1,4 +1,4 @@
-package fuzs.hoppergadgetry.common.data;
+package fuzs.hoppergadgetry.common.data.loot;
 
 import fuzs.hoppergadgetry.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.data.v2.AbstractLootProvider;
